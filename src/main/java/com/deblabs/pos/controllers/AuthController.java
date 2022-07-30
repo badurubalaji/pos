@@ -40,9 +40,9 @@ import com.deblabs.pos.security.services.UserDetailsImpl;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-  @Autowired
-  AuthenticationManager authenticationManager;
-
+ @Autowired   
+ AuthenticationManager authenticationManager;
+   
   @Autowired
   UserRepository userRepository;
 

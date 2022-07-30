@@ -5,9 +5,9 @@ import java.util.Set;
 
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -30,18 +30,23 @@ public class User {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotBlank
+  @Column(nullable = false)
   @Size(max = 20)
   private String username;
 
-  @NotBlank
+  @Column(nullable = false)
   @Size(max = 50)
   @Email
   private String email;
 
-  @NotBlank
-  @Size(max = 120)
+  @Column(nullable = false)
   private String password;
+
+  @Column(name = "first_name")
+  private String firstName;
+   
+  @Column(name = "last_name")
+  private String lastName;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "user_roles", 
@@ -97,4 +102,8 @@ public class User {
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
+
+public boolean isEmailVerified() {
+    return false;
+}
 }
