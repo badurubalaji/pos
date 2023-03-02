@@ -31,6 +31,7 @@ public class JwtUtils {
   private String jwtCookie;
 
   public String getJwtFromCookies(HttpServletRequest request) {
+    System.out.println(request.toString());
     Cookie cookie = WebUtils.getCookie(request, jwtCookie);
     if (cookie != null) {
       return cookie.getValue();
